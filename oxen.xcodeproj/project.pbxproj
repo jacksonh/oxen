@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A9AE9C71961AC6E005461F7 /* oxenRemoveObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE9C61961AC6E005461F7 /* oxenRemoveObjectTests.m */; };
+		7A9AE9C91961B163005461F7 /* oxenRemoveAllObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE9C81961B163005461F7 /* oxenRemoveAllObjectsTests.m */; };
+		7A9AE9CB1961B230005461F7 /* oxenRemoveObjectAtIndexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE9CA1961B230005461F7 /* oxenRemoveObjectAtIndexTests.m */; };
+		7A9AE9CD1961B370005461F7 /* oxenRemoveLastObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE9CC1961B370005461F7 /* oxenRemoveLastObjectTests.m */; };
+		7A9AE9CF1961B537005461F7 /* oxenInsertObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE9CE1961B537005461F7 /* oxenInsertObjectTests.m */; };
+		7A9AE9D11961B681005461F7 /* oxenReplaceObjectAtIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE9D01961B681005461F7 /* oxenReplaceObjectAtIndex.m */; };
 		7AF70AA81961A4C700A4FD3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF70AA71961A4C700A4FD3D /* Foundation.framework */; };
 		7AF70AB61961A4C700A4FD3D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF70AB51961A4C700A4FD3D /* XCTest.framework */; };
 		7AF70AB71961A4C700A4FD3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF70AA71961A4C700A4FD3D /* Foundation.framework */; };
 		7AF70AB91961A4C700A4FD3D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF70AB81961A4C700A4FD3D /* UIKit.framework */; };
 		7AF70ABC1961A4C700A4FD3D /* liboxen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF70AA41961A4C700A4FD3D /* liboxen.a */; };
 		7AF70AC21961A4C700A4FD3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF70AC01961A4C700A4FD3D /* InfoPlist.strings */; };
-		7AF70AC41961A4C700A4FD3D /* oxenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF70AC31961A4C700A4FD3D /* oxenTests.m */; };
+		7AF70AC41961A4C700A4FD3D /* oxenAddObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF70AC31961A4C700A4FD3D /* oxenAddObjectTests.m */; };
 		7AF70AD11961A4FE00A4FD3D /* OXNChangeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF70ACE1961A4FE00A4FD3D /* OXNChangeInfo.m */; };
 		7AF70AD21961A4FE00A4FD3D /* OXNObservableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF70AD01961A4FE00A4FD3D /* OXNObservableArray.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +47,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A9AE9C61961AC6E005461F7 /* oxenRemoveObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oxenRemoveObjectTests.m; sourceTree = "<group>"; };
+		7A9AE9C81961B163005461F7 /* oxenRemoveAllObjectsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oxenRemoveAllObjectsTests.m; sourceTree = "<group>"; };
+		7A9AE9CA1961B230005461F7 /* oxenRemoveObjectAtIndexTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oxenRemoveObjectAtIndexTests.m; sourceTree = "<group>"; };
+		7A9AE9CC1961B370005461F7 /* oxenRemoveLastObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oxenRemoveLastObjectTests.m; sourceTree = "<group>"; };
+		7A9AE9CE1961B537005461F7 /* oxenInsertObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oxenInsertObjectTests.m; sourceTree = "<group>"; };
+		7A9AE9D01961B681005461F7 /* oxenReplaceObjectAtIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oxenReplaceObjectAtIndex.m; sourceTree = "<group>"; };
 		7AF70AA41961A4C700A4FD3D /* liboxen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liboxen.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF70AA71961A4C700A4FD3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7AF70AAB1961A4C700A4FD3D /* oxen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "oxen-Prefix.pch"; sourceTree = "<group>"; };
@@ -49,7 +61,7 @@
 		7AF70AB81961A4C700A4FD3D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		7AF70ABF1961A4C700A4FD3D /* oxenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "oxenTests-Info.plist"; sourceTree = "<group>"; };
 		7AF70AC11961A4C700A4FD3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7AF70AC31961A4C700A4FD3D /* oxenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oxenTests.m; sourceTree = "<group>"; };
+		7AF70AC31961A4C700A4FD3D /* oxenAddObjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oxenAddObjectTests.m; sourceTree = "<group>"; };
 		7AF70ACD1961A4FE00A4FD3D /* OXNChangeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXNChangeInfo.h; sourceTree = "<group>"; };
 		7AF70ACE1961A4FE00A4FD3D /* OXNChangeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXNChangeInfo.m; sourceTree = "<group>"; };
 		7AF70ACF1961A4FE00A4FD3D /* OXNObservableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXNObservableArray.h; sourceTree = "<group>"; };
@@ -131,7 +143,13 @@
 		7AF70ABD1961A4C700A4FD3D /* oxenTests */ = {
 			isa = PBXGroup;
 			children = (
-				7AF70AC31961A4C700A4FD3D /* oxenTests.m */,
+				7AF70AC31961A4C700A4FD3D /* oxenAddObjectTests.m */,
+				7A9AE9C61961AC6E005461F7 /* oxenRemoveObjectTests.m */,
+				7A9AE9C81961B163005461F7 /* oxenRemoveAllObjectsTests.m */,
+				7A9AE9CA1961B230005461F7 /* oxenRemoveObjectAtIndexTests.m */,
+				7A9AE9CC1961B370005461F7 /* oxenRemoveLastObjectTests.m */,
+				7A9AE9CE1961B537005461F7 /* oxenInsertObjectTests.m */,
+				7A9AE9D01961B681005461F7 /* oxenReplaceObjectAtIndex.m */,
 				7AF70ABE1961A4C700A4FD3D /* Supporting Files */,
 			);
 			path = oxenTests;
@@ -236,7 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AF70AC41961A4C700A4FD3D /* oxenTests.m in Sources */,
+				7A9AE9CD1961B370005461F7 /* oxenRemoveLastObjectTests.m in Sources */,
+				7A9AE9CB1961B230005461F7 /* oxenRemoveObjectAtIndexTests.m in Sources */,
+				7A9AE9D11961B681005461F7 /* oxenReplaceObjectAtIndex.m in Sources */,
+				7A9AE9C91961B163005461F7 /* oxenRemoveAllObjectsTests.m in Sources */,
+				7A9AE9CF1961B537005461F7 /* oxenInsertObjectTests.m in Sources */,
+				7A9AE9C71961AC6E005461F7 /* oxenRemoveObjectTests.m in Sources */,
+				7AF70AC41961A4C700A4FD3D /* oxenAddObjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +433,7 @@
 				7AF70AC91961A4C700A4FD3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7AF70ACA1961A4C700A4FD3D /* Build configuration list for PBXNativeTarget "oxenTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +442,7 @@
 				7AF70ACC1961A4C700A4FD3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

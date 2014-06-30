@@ -7,18 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OXNChangeInfo.h"
 
-@class RACSignal;
 
-@interface OXNObservableArray : NSObject
+@interface OXNObservableArray : NSMutableArray
 
-- (void)addObject:(id)item;
 - (void)performBatchUpdates:(void (^)(void))updates;
 
-//
-// A signal of OXNChangeInfo objects, representing changes
-// to the underlying array.
-//
-@property (strong, nonatomic, readonly) RACSignal *changes;
+@property (nonatomic, copy) void (^onCollectionChanged)(id<OXNChangeInfo>);
 
 @end

@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol OXNChangeInfo <NSObject>
 
-@interface OXNChangeInfo : NSObject
+@property (strong, nonatomic, readonly) NSArray *currentArray;
+
+- (instancetype)initWithCurrentArray:(NSArray *)array;
+
+@end
+
+
+@interface OXNChangeInfo : NSObject<OXNChangeInfo>
 
 @property (strong, nonatomic, readonly) NSArray *currentArray;
 
@@ -80,8 +88,8 @@
 ///
 @interface OXNItemReplacedChangeInfo : OXNChangeInfo
 
+@property (strong, nonatomic, readonly) id item;
 @property (strong, nonatomic, readonly) id oldItem;
-@property (strong, nonatomic, readonly) id newItem;
 @property (assign, nonatomic, readonly) NSUInteger replacedAt;
 
 - (instancetype)initWithOldItem:(id)oldItem newItem:(id)newItem replacedAtIndex:(NSUInteger)index andCurrentArray:(NSArray *)array;

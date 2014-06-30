@@ -8,13 +8,12 @@
 #import "OXNObservableArray.h"
 #import "OXNChangeInfo.h"
 
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface OXNObservableArray()
 
 @property (strong, nonatomic) NSMutableArray *backing;
 
-@property (assign, nonatomic) BOOL isEmitting;
+@property (assign, nonatomic) BOOL isBatching;
 @property (strong, nonatomic) NSMutableArray *currentBatch;
 
 @end
@@ -35,6 +34,7 @@
 {
     self = [super init];
     if (self) {
+        _backing = [[NSMutableArray alloc] init];
         for (id item in array)
             [self addObject:item];
     }
@@ -51,9 +51,10 @@
     return [self.backing objectAtIndex:index];
 }
 
-- (void)emit:(OXNChangeInfo *)change
+- (void)emit:(id<OXNChangeInfo>)change
 {
-    
+    if (self.onCollectionChanged)
+        self.onCollectionChanged (change);
 }
 
 - (void)emitPending
@@ -65,16 +66,25 @@
 
 - (void)performBatchUpdates:(void (^)(void))updates
 {
-    updates ();
+    self.isBatching = YES;
+
+    @try {
+        updates ();
+    }
+    @finally {
+        self.isBatching = NO;
+    }
+    
+    
     [self emitPending];
 }
 
 - (void)addChange:(OXNChangeInfo *)change
 {
-    if (self.isEmitting) {
-        [self emit:change];
-    } else {
+    if (self.isBatching) {
         [self.currentBatch addObject:change];
+    } else {
+        [self emit:change];
     }
 }
 
@@ -101,13 +111,13 @@
     id object = [self.backing objectAtIndex:index];
 
     [self.backing removeObjectAtIndex:index];
-    [self addChange:[[OXNItemInsertedChangeInfo alloc] initWithItem:object insertedAtIndex:index andCurrentArray:self.backing]];
+    [self addChange:[[OXNItemRemovedChangeInfo alloc] initWithItem:object removedAtIndex:index andCurrentArray:self.backing]];
 }
 
 - (void)removeLastObject
 {
     NSInteger lastIndex = self.backing.count - 1;
-    [self.backing removeObjectAtIndex:lastIndex];
+    [self removeObjectAtIndex:lastIndex];
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)item

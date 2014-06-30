@@ -42,8 +42,8 @@
 
 @interface OXNItemReplacedChangeInfo()
 
+@property (strong, nonatomic, readwrite) id item;
 @property (strong, nonatomic, readwrite) id oldItem;
-@property (strong, nonatomic, readwrite) id newItem;
 @property (assign, nonatomic, readwrite) NSUInteger replacedAt;
 
 @end
@@ -131,7 +131,7 @@
     self = [super initWithCurrentArray:array];
     if (self) {
         _oldItem = [oldItem copy];
-        _newItem = [newItem copy];
+        _item = [newItem copy];
         _replacedAt = index;
     }
     return self;
