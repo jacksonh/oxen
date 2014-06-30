@@ -100,7 +100,7 @@
 - (void)addObject:(id)item
 {
     [self.backing addObject:item];
-    [self addChange:[[OXNItemAddedChangeInfo alloc] initWithItem:item andCurrentArray:(self.isBatching ? nil : self.backing)]];
+    [self addChange:[[OXNItemAddedChangeInfo alloc] initWithItem:item addedAtIndex:(self.backing.count - 1) andCurrentArray:(self.isBatching ? nil : self.backing)]];
 }
 
 - (void)removeAllObjects

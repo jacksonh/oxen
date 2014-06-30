@@ -29,14 +29,14 @@
 @interface OXNItemInsertedChangeInfo()
 
 @property (strong, nonatomic, readwrite) id item;
-@property (assign, nonatomic, readwrite) NSUInteger insertedAt;
+@property (assign, nonatomic, readwrite) NSUInteger index;
 
 @end
 
 @interface OXNItemRemovedChangeInfo()
 
 @property (strong, nonatomic, readwrite) id item;
-@property (assign, nonatomic, readwrite) NSUInteger removedAt;
+@property (assign, nonatomic, readwrite) NSUInteger index;
 
 @end
 
@@ -44,7 +44,7 @@
 
 @property (strong, nonatomic, readwrite) id item;
 @property (strong, nonatomic, readwrite) id oldItem;
-@property (assign, nonatomic, readwrite) NSUInteger replacedAt;
+@property (assign, nonatomic, readwrite) NSUInteger index;
 
 @end
 
@@ -84,11 +84,12 @@
 
 @implementation OXNItemAddedChangeInfo
 
-- (instancetype)initWithItem:(id)item andCurrentArray:(NSArray *)array
+- (instancetype)initWithItem:(id)item addedAtIndex:(NSUInteger)index andCurrentArray:(NSArray *)array;
 {
     self = [super initWithCurrentArray:array];
     if (self) {
         _item = [item copy];
+        _index = index;
     }
     return self;
 }
@@ -106,7 +107,7 @@
     self = [super initWithCurrentArray:array];
     if (self) {
         _item = [item copy];
-        _insertedAt = index;
+        _index = index;
     }
     return self;
 }
@@ -121,7 +122,7 @@
     self = [super initWithCurrentArray:array];
     if (self) {
         _item = [item copy];
-        _removedAt = index;
+        _index = index;
     }
     return self;
 }
@@ -137,7 +138,7 @@
     if (self) {
         _oldItem = [oldItem copy];
         _item = [newItem copy];
-        _replacedAt = index;
+        _index = index;
     }
     return self;
 }

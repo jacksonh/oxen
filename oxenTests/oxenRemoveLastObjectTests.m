@@ -62,7 +62,7 @@
 - (void)test_removeObjectAtIndex_setsIndexInAddItemChangeInfo
 {
     self.array.onCollectionChanged = ^(OXNItemRemovedChangeInfo *change) {
-        NSCAssert(change.removedAt == 9, @"removed item index");
+        NSCAssert(change.index == 9, @"removed item index");
     };
 
     [self.array removeLastObject];

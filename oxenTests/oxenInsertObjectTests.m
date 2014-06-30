@@ -63,7 +63,7 @@
 - (void)test_insertObjectAtIndex_setsIndexInAddItemChangeInfo
 {
     self.array.onCollectionChanged = ^(OXNItemInsertedChangeInfo *change) {
-        NSCAssert(change.insertedAt == 2, @"removed item index");
+        NSCAssert(change.index == 2, @"removed item index");
     };
 
     [self.array insertObject:@"" atIndex:2];

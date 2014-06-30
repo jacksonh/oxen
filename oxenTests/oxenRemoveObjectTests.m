@@ -63,7 +63,7 @@
     [self.array addObject:other];
 
     self.array.onCollectionChanged = ^(OXNItemRemovedChangeInfo *change) {
-        NSCAssert(change.removedAt == 1, @"removed item index");
+        NSCAssert(change.index == 1, @"removed item index");
     };
 
     [self.array removeObject:other];

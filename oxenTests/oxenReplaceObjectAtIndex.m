@@ -71,7 +71,7 @@
 - (void)test_replaceObjectAtIndex_setsReplacedAtIndexInReplaceChangeInfo
 {
     self.array.onCollectionChanged = ^(OXNItemReplacedChangeInfo *change) {
-        NSCAssert(change.replacedAt == 2, @"replacedAt index");
+        NSCAssert(change.index == 2, @"replacedAt index");
     };
     
     [self.array replaceObjectAtIndex:2 withObject:@""];

@@ -44,8 +44,9 @@
 @interface OXNItemAddedChangeInfo : OXNChangeInfo
 
 @property (strong, nonatomic, readonly) id item;
+@property (assign, nonatomic, readonly) NSUInteger index;
 
-- (instancetype)initWithItem:(id)item andCurrentArray:(NSArray *)array;
+- (instancetype)initWithItem:(id)item addedAtIndex:(NSUInteger)index andCurrentArray:(NSArray *)array;
 
 @end
 
@@ -63,7 +64,7 @@
 @interface OXNItemInsertedChangeInfo : OXNChangeInfo
 
 @property (strong, nonatomic, readonly) id item;
-@property (assign, nonatomic, readonly) NSUInteger insertedAt;
+@property (assign, nonatomic, readonly) NSUInteger index;
 
 - (instancetype)initWithItem:(id)item insertedAtIndex:(NSUInteger)index andCurrentArray:(NSArray *)array;
 
@@ -76,7 +77,7 @@
 @interface OXNItemRemovedChangeInfo : OXNChangeInfo
 
 @property (strong, nonatomic, readonly) id item;
-@property (assign, nonatomic, readonly) NSUInteger removedAt;
+@property (assign, nonatomic, readonly) NSUInteger index;
 
 - (instancetype)initWithItem:(id)item removedAtIndex:(NSUInteger)index andCurrentArray:(NSArray *)array;
 
@@ -90,7 +91,7 @@
 
 @property (strong, nonatomic, readonly) id item;
 @property (strong, nonatomic, readonly) id oldItem;
-@property (assign, nonatomic, readonly) NSUInteger replacedAt;
+@property (assign, nonatomic, readonly) NSUInteger index;
 
 - (instancetype)initWithOldItem:(id)oldItem newItem:(id)newItem replacedAtIndex:(NSUInteger)index andCurrentArray:(NSArray *)array;
 
