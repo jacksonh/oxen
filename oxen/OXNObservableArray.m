@@ -9,6 +9,13 @@
 #import "OXNChangeInfo.h"
 
 
+@interface OXNChangeInfo(Private)
+
+- (void)setCurrentArrayNoCopy:(NSArray *)array;
+
+@end
+
+
 @interface OXNObservableArray()
 
 @property (strong, nonatomic) NSMutableArray *backing;
@@ -59,9 +66,12 @@
 
 - (void)emitPending
 {
-    OXNChangeInfo *change = [[OXNBatchChangeInfo alloc] initWithChanges:self.currentBatch andCurrentArray:self.backing];
+    OXNChangeInfo *batch = [[OXNBatchChangeInfo alloc] initWithChanges:self.currentBatch andCurrentArray:self.backing];
+    for (OXNChangeInfo *change in self.currentBatch) {
+        [change setCurrentArrayNoCopy:batch.currentArray];
+    }
     [self.currentBatch removeAllObjects];
-    [self emit:change];
+    [self emit:batch];
 }
 
 - (void)performBatchUpdates:(void (^)(void))updates
@@ -74,8 +84,7 @@
     @finally {
         self.isBatching = NO;
     }
-    
-    
+
     [self emitPending];
 }
 
@@ -91,7 +100,7 @@
 - (void)addObject:(id)item
 {
     [self.backing addObject:item];
-    [self addChange:[[OXNItemAddedChangeInfo alloc] initWithItem:item andCurrentArray:self.backing]];
+    [self addChange:[[OXNItemAddedChangeInfo alloc] initWithItem:item andCurrentArray:(self.isBatching ? nil : self.backing)]];
 }
 
 - (void)removeAllObjects
@@ -103,7 +112,7 @@
 - (void)insertObject:(id)object atIndex:(NSUInteger)index
 {
     [self.backing insertObject:object atIndex:index];
-    [self addChange:[[OXNItemInsertedChangeInfo alloc] initWithItem:object insertedAtIndex:index andCurrentArray:self.backing]];
+    [self addChange:[[OXNItemInsertedChangeInfo alloc] initWithItem:object insertedAtIndex:index andCurrentArray:(self.isBatching ? nil : self.backing)]];
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index
@@ -111,7 +120,7 @@
     id object = [self.backing objectAtIndex:index];
 
     [self.backing removeObjectAtIndex:index];
-    [self addChange:[[OXNItemRemovedChangeInfo alloc] initWithItem:object removedAtIndex:index andCurrentArray:self.backing]];
+    [self addChange:[[OXNItemRemovedChangeInfo alloc] initWithItem:object removedAtIndex:index andCurrentArray:(self.isBatching ? nil : self.backing)]];
 }
 
 - (void)removeLastObject
@@ -125,7 +134,7 @@
     id oldItem = [self.backing objectAtIndex:index];
 
     [self.backing replaceObjectAtIndex:index withObject:item];
-    [self addChange:[[OXNItemReplacedChangeInfo alloc] initWithOldItem:oldItem newItem:item replacedAtIndex:index andCurrentArray:self.backing]];
+    [self addChange:[[OXNItemReplacedChangeInfo alloc] initWithOldItem:oldItem newItem:item replacedAtIndex:index andCurrentArray:(self.isBatching ? nil : self.backing)]];
 }
 
 @end

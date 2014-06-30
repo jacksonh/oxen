@@ -60,6 +60,11 @@
     return self;
 }
 
+- (void)setCurrentArrayNoCopy:(NSArray *)array;
+{
+    self.currentArray = array;
+}
+
 @end
 
 

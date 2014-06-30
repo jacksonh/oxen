@@ -48,11 +48,7 @@
     array.onCollectionChanged = ^(OXNItemAddedChangeInfo *change) {
         NSAssert([change.item isEqualToString:@"__test string__"], @"item value");
     };
-    
-    [array performBatchUpdates:^{
-        [array insertObject:@"" atIndex:1];
-        [array removeObject:@"test"];
-    }];
+
     [array addObject:@"__test string__"];
 }
 
