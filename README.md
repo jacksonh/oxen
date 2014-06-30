@@ -39,3 +39,8 @@ self.array.onCollectionChanged = ^(id<OXNChangeInfo> change) {
     ... handle other cases
 };
 ```
+
+Individual changes within the batch will all point to the same currentArray as the parent OXNBatchChangeInfo in batch operations. They will not be individually updated to reflect the backing array at the time of their change. This avoids extra copies and ensures a consistent model.
+
+
+
