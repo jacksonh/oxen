@@ -7,7 +7,7 @@
 
 #import "OXNObservableArray.h"
 #import "OXNChangeInfo.h"
-
+#import "OXNObserver.h"
 
 @interface OXNChangeInfo(Private)
 
@@ -15,13 +15,14 @@
 
 @end
 
-
 @interface OXNObservableArray()
 
 @property (strong, nonatomic) NSMutableArray *backing;
 
 @property (assign, nonatomic) BOOL isBatching;
 @property (strong, nonatomic) NSMutableArray *currentBatch;
+
+@property (strong, nonatomic) NSMutableArray *observers;
 
 @end
 
@@ -37,12 +38,26 @@
 	return self;
 }
 
+- (void)addObserver:(NSObject *)observer withSelector:(SEL)selector
+{
+	OXNObserver *o = [[OXNObserver alloc] initWithObject:observer andSelector:selector];
+	[self.observers addObject:o];
+}
+
 - (NSMutableArray *)currentBatch
 {
 	if (!_currentBatch) {
 		_currentBatch = [[NSMutableArray alloc] init];
 	}
 	return _currentBatch;
+}
+
+- (NSMutableArray *)observers
+{
+	if (!_observers) {
+		_observers = [[NSMutableArray alloc] init];
+	}
+	return _observers;
 }
 
 - (NSUInteger)count
@@ -59,6 +74,7 @@
 {
     if (self.onCollectionChanged)
         self.onCollectionChanged (change);
+	[self.observers makeObjectsPerformSelector:@selector(sendChangeInfo:) withObject:change];
 }
 
 - (void)emitPending

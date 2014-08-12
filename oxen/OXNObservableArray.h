@@ -13,6 +13,7 @@
 @interface OXNObservableArray : NSMutableArray
 
 - (void)performBatchUpdates:(void (^)(void))updates;
+- (void)addObserver:(NSObject *)observer withSelector:(SEL)selector;
 
 @property (nonatomic, copy) void (^onCollectionChanged)(id<OXNChangeInfo>);
 
