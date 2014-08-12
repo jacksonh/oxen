@@ -88,7 +88,7 @@
 {
     self = [super initWithCurrentArray:array];
     if (self) {
-        _item = [item copy];
+		_item = item;
         _index = index;
     }
     return self;
@@ -106,7 +106,7 @@
 {
     self = [super initWithCurrentArray:array];
     if (self) {
-        _item = [item copy];
+		_item = item;
         _index = index;
     }
     return self;
@@ -121,7 +121,7 @@
 {
     self = [super initWithCurrentArray:array];
     if (self) {
-        _item = [item copy];
+		_item = item;
         _index = index;
     }
     return self;
@@ -136,8 +136,8 @@
 {
     self = [super initWithCurrentArray:array];
     if (self) {
-        _oldItem = [oldItem copy];
-        _item = [newItem copy];
+		_oldItem = oldItem;
+		_item = newItem;
         _index = index;
     }
     return self;
