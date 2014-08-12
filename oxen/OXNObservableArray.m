@@ -103,6 +103,20 @@
     [self addChange:[[OXNItemAddedChangeInfo alloc] initWithItem:item addedAtIndex:(self.backing.count - 1) andCurrentArray:(self.isBatching ? nil : self.backing)]];
 }
 
+- (void)addObjectsFromArray:(NSArray *)otherArray
+{
+	[self performBatchUpdates:^{
+		[super addObjectsFromArray:otherArray];
+	}];
+}
+
+- (void)removeObjectsInArray:(NSArray *)otherArray
+{
+	[self performBatchUpdates:^{
+		[super removeObjectsInArray:otherArray];
+	}];
+}
+
 - (void)removeAllObjects
 {
     [self.backing removeAllObjects];
