@@ -10,7 +10,7 @@
 
 @interface OXNObserver()
 
-@property (strong, nonatomic) id object;
+@property (weak, nonatomic) id object;
 @property (assign, nonatomic) SEL selector;
 
 @end
