@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "oxen"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Observable collections in Objective-C"
 
   s.description  = <<-DESC
