@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "oxen"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Observable collections in Objective-C"
 
   s.description  = <<-DESC
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "5.0"
   s.osx.deployment_target = "10.7"
 
-  s.source       = { :git => "https://github.com/jacksonh/oxen.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/jacksonh/oxen.git", :tag => "0.0.4" }
 
   s.source_files  = "oxen/*.{h,m}"
   s.public_header_files = "oxen/*.h"
