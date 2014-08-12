@@ -43,5 +43,11 @@ self.array.onCollectionChanged = ^(id<OXNChangeInfo> change) {
 Individual changes within the batch will all point to the same currentArray as the parent OXNBatchChangeInfo in batch operations. They will not be individually updated to reflect the backing array at the time of their change. This avoids extra copies and ensures a consistent model.
 
 
+TODO
+====
+
+- [ ] Add an enum so switch statements can be made in place of ```isKindOfClass```.
+- [ ] Implement fast enumeration, flattening out batch updates so a single switch can be used to handle all items.
+
 
 
