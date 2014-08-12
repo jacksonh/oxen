@@ -30,22 +30,19 @@
 
 - (instancetype)init
 {
-    self = [self initWithArray:@[]];
-    if (self) {
-        
-    }
-    return self;
+	self = [super init];
+	if (self) {
+		_backing = [[NSMutableArray alloc] init];
+	}
+	return self;
 }
 
-- (instancetype)initWithArray:(NSArray *)array
+- (NSMutableArray *)currentBatch
 {
-    self = [super init];
-    if (self) {
-        _backing = [[NSMutableArray alloc] init];
-        for (id item in array)
-            [self addObject:item];
-    }
-    return self;
+	if (!_currentBatch) {
+		_currentBatch = [[NSMutableArray alloc] init];
+	}
+	return _currentBatch;
 }
 
 - (NSUInteger)count
