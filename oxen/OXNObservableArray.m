@@ -18,11 +18,13 @@
 @interface OXNObservableArray()
 
 @property (strong, nonatomic) NSMutableArray *backing;
+@property (strong, nonatomic) NSMutableArray *observers;
 
-@property (assign, nonatomic) BOOL isBatching;
+@property (assign, nonatomic) NSInteger batchDepth;
+@property (assign, nonatomic, readonly) BOOL isBatching;
 @property (strong, nonatomic) NSMutableArray *currentBatch;
 
-@property (strong, nonatomic) NSMutableArray *observers;
+
 
 @end
 
@@ -89,16 +91,24 @@
 
 - (void)performBatchUpdates:(void (^)(void))updates
 {
-    self.isBatching = YES;
+	self.batchDepth = self.batchDepth + 1;
 
-    @try {
+	@try {
         updates ();
     }
     @finally {
-        self.isBatching = NO;
+        self.batchDepth -= 1;
     }
 
-    [self emitPending];
+	if (self.batchDepth <= 0) {
+		[self emitPending];
+		self.batchDepth = 0;
+	}
+}
+
+- (BOOL)isBatching
+{
+	return (self.batchDepth > 0);
 }
 
 - (void)addChange:(OXNChangeInfo *)change

@@ -91,6 +91,23 @@
 
 	[self.array removeObjectsInArray:@[ obj1, obj2 ]];
 
-	XCTAssertEqual (changesCount, 2, @"Number of changes in batch");}
+	XCTAssertEqual (changesCount, 2, @"Number of changes in batch");
+}
+
+- (void)test_addObjectsFromArrayWhilePerformingBatch_hasCorrectChangeCount
+{
+	__block NSInteger changesCount = 0;
+
+	self.array.onCollectionChanged = ^(OXNBatchChangeInfo *change) {
+		changesCount += change.changes.count;
+	};
+
+	[self.array performBatchUpdates:^{
+		[self.array addObjectsFromArray:@[ @"", @"", @"" ]];
+		[self.array removeObjectAtIndex:0];
+	}];
+
+	XCTAssertEqual(changesCount, 4, @"Number of changes in batch");
+}
 
 @end
